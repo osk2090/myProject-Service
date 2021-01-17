@@ -38,64 +38,82 @@ public class P01 {
             System.out.println("0.영수증 출력");
             System.out.print("메뉴선택> ");
             int choice = scan.nextInt();
-/*
-영수증출력 만들기/해당하는 메뉴의 가격도 배열에 넣어서 영수증 출력때 옆에 같이 출력하게 하기
- */
+
             if (choice == 1) {//한식
                 System.out.println("---한식---");
                 for (int i = 0; i < koreaF.length; i++) {
-                    System.out.printf("%d. %s %s원\n", (i + 1), (koreaF[i]), koreaPrice[i]);
+                    System.out.printf("%d. %s %d원\n", (i + 1), (koreaF[i]), koreaPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
                 choice = scan.nextInt() - 1;
-                basket[cnt] = koreaF[choice];
-                pay[cnt] = koreaPrice[choice];
-                cnt++;
+                if (choice + 1 > koreaF.length) {
+                    System.out.println("해당 메뉴는 없습니다.");
+                } else {
+                    basket[cnt] = koreaF[choice];
+                    pay[cnt] = koreaPrice[choice];
+                    cnt++;
+                }
             } else if (choice == 2) {//일식
                 System.out.println("---일식---");
                 for (int i = 0; i < japanF.length; i++) {
-                    System.out.printf("%d. %s %s원\n", (i + 1), (japanF[i]), japanPrice[i]);
+                    System.out.printf("%d. %s %d원\n", (i + 1), (japanF[i]), japanPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
                 choice = scan.nextInt() - 1;
-                basket[cnt] = japanF[choice];
-                pay[cnt] = japanPrice[choice];
-                cnt++;
+                if (choice + 1 > japanF.length) {
+                    System.out.println("해당 메뉴는 없습니다.");
+                } else {
+                    basket[cnt] = japanF[choice];
+                    pay[cnt] = japanPrice[choice];
+                    cnt++;
+                }
             } else if (choice == 3) {//중식
                 System.out.println("---중식---");
                 for (int i = 0; i < chinaF.length; i++) {
-                    System.out.printf("%d. %s %s원\n", (i + 1), (chinaF[i]), chinaPrice[i]);
+                    System.out.printf("%d. %s %d원\n", (i + 1), (chinaF[i]), chinaPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
                 choice = scan.nextInt() - 1;
-                basket[cnt] = chinaF[choice];
-                pay[cnt] = chinaPrice[choice];
-                cnt++;
+                if (choice + 1 > chinaF.length) {
+                    System.out.println("해당 메뉴는 없습니다.");
+                } else {
+                    basket[cnt] = chinaF[choice];
+                    pay[cnt] = chinaPrice[choice];
+                    cnt++;
+                }
             } else if (choice == 4) {//양식
                 System.out.println("---양식---");
                 for (int i = 0; i < westF.length; i++) {
-                    System.out.printf("%d. %s %s원\n", (i + 1), (westF[i]), westPrice[i]);
+                    System.out.printf("%d. %s %d원\n", (i + 1), (westF[i]), westPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
                 choice = scan.nextInt() - 1;
-                basket[cnt] = westF[choice];
-                pay[cnt] = westPrice[choice];
-                cnt++;
+                if (choice + 1 > westF.length) {
+                    System.out.println("해당 메뉴는 없습니다.");
+                } else {
+                    basket[cnt] = westF[choice];
+                    pay[cnt] = westPrice[choice];
+                    cnt++;
+                }
             } else if (choice == 5) {//디저트
                 System.out.println("---디저트---");
                 for (int i = 0; i < dessert.length; i++) {
-                    System.out.printf("%d. %s %s원\n", (i + 1), (dessert[i]), dessertPrice[i]);
+                    System.out.printf("%d. %s %d원\n", (i + 1), (dessert[i]), dessertPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
                 choice = scan.nextInt() - 1;
-                basket[cnt] = dessert[choice];
-                pay[cnt] = dessertPrice[choice];
-                cnt++;
+                if (choice + 1 > dessert.length) {
+                    System.out.println("해당 메뉴는 없습니다.");
+                } else {
+                    basket[cnt] = dessert[choice];
+                    pay[cnt] = dessertPrice[choice];
+                    cnt++;
+                }
             } else if (choice == 0) {
                 if (cnt == 0) {
                     System.out.println("현재 장바구니가 비어있습니다.");
@@ -103,12 +121,12 @@ public class P01 {
                     System.out.println("---영수증---");
                     int total = 0;
                     for (int i = 0; i < cnt; i++) {
-                        System.out.printf("%d. %s --- \t%s\n", (i + 1), basket[i], pay[i]);
+                        System.out.printf("%d. %s %d원\n", (i + 1), basket[i], pay[i]);
                         total += pay[i];
                     }
                     System.out.println();
                     System.out.println("----------------------------");
-                    System.out.printf("              합계:%d 원\n", total);
+                    System.out.printf("              합계:%d원\n", total);
                 }
             } else {
                 System.out.println("없는 메뉴입니다.");
