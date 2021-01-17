@@ -6,14 +6,13 @@ public class P01 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        final int SIZE = 100;//회원수
+        final int SIZE = 100;
 
         System.out.println("---배달의 민족---");
 
-        String[] client = new String[SIZE];//회원
         String[] basket = new String[SIZE];//장바구니
         int[] pay = new int[SIZE];//가격저장
-        int[] qArray = new int[SIZE];
+        int[] qArray = new int[SIZE];//수량저장
 
         String printMenu = "1. 한식 2. 일식 3. 중식 4. 양식 5. 디저트";
 
@@ -37,7 +36,7 @@ public class P01 {
         int quantity = 0;//수량
 
         while (run) {
-            System.out.println(printMenu);
+           System.out.println(printMenu);
             System.out.println("0.영수증 출력");
             System.out.print("메뉴선택> ");
             int choice = scan.nextInt();
