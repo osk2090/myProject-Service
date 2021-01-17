@@ -13,6 +13,7 @@ public class P01 {
         String[] client = new String[SIZE];//회원
         String[] basket = new String[SIZE];//장바구니
         int[] pay = new int[SIZE];//가격저장
+        int[] qArray = new int[SIZE];
 
         String printMenu = "1. 한식 2. 일식 3. 중식 4. 양식 5. 디저트";
 
@@ -31,8 +32,10 @@ public class P01 {
         String[] dessert = {"아메리카노", "라떼", "레모네이드", "홍차", "케잌"};//디저트
         int[] dessertPrice = {2500, 3500, 2000, 4000, 6000};
 
-        int cnt = 0;
+        int cnt = 0;//인덱스위치
         boolean run = true;
+        int quantity = 0;//수량
+
         while (run) {
             System.out.println(printMenu);
             System.out.println("0.영수증 출력");
@@ -50,6 +53,10 @@ public class P01 {
                 if (choice + 1 > koreaF.length) {
                     System.out.println("해당 메뉴는 없습니다.");
                 } else {
+                    System.out.print("수량> ");
+                    quantity = scan.nextInt();
+
+                    qArray[cnt] = quantity;
                     basket[cnt] = koreaF[choice];
                     pay[cnt] = koreaPrice[choice];
                     cnt++;
@@ -65,6 +72,10 @@ public class P01 {
                 if (choice + 1 > japanF.length) {
                     System.out.println("해당 메뉴는 없습니다.");
                 } else {
+                    System.out.print("수량> ");
+                    quantity = scan.nextInt();
+
+                    qArray[cnt] = quantity;
                     basket[cnt] = japanF[choice];
                     pay[cnt] = japanPrice[choice];
                     cnt++;
@@ -80,6 +91,10 @@ public class P01 {
                 if (choice + 1 > chinaF.length) {
                     System.out.println("해당 메뉴는 없습니다.");
                 } else {
+                    System.out.print("수량> ");
+                    quantity = scan.nextInt();
+
+                    qArray[cnt] = quantity;
                     basket[cnt] = chinaF[choice];
                     pay[cnt] = chinaPrice[choice];
                     cnt++;
@@ -95,6 +110,10 @@ public class P01 {
                 if (choice + 1 > westF.length) {
                     System.out.println("해당 메뉴는 없습니다.");
                 } else {
+                    System.out.print("수량> ");
+                    quantity = scan.nextInt();
+
+                    qArray[cnt] = quantity;
                     basket[cnt] = westF[choice];
                     pay[cnt] = westPrice[choice];
                     cnt++;
@@ -110,6 +129,10 @@ public class P01 {
                 if (choice + 1 > dessert.length) {
                     System.out.println("해당 메뉴는 없습니다.");
                 } else {
+                    System.out.print("수량> ");
+                    quantity = scan.nextInt();
+
+                    qArray[cnt] = quantity;
                     basket[cnt] = dessert[choice];
                     pay[cnt] = dessertPrice[choice];
                     cnt++;
@@ -121,8 +144,8 @@ public class P01 {
                     System.out.println("---영수증---");
                     int total = 0;
                     for (int i = 0; i < cnt; i++) {
-                        System.out.printf("%d. %s %d원\n", (i + 1), basket[i], pay[i]);
-                        total += pay[i];
+                        System.out.printf("%d. %s %d원---%d개\n", (i + 1), basket[i], pay[i], qArray[i]);
+                        total += pay[i] * qArray[i];
                     }
                     System.out.println();
                     System.out.println("----------------------------");
