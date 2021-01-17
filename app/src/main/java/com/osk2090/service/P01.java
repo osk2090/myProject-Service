@@ -44,7 +44,7 @@ public class P01 {
             if (choice == 1) {//한식
                 System.out.println("---한식---");
                 for (int i = 0; i < koreaF.length; i++) {
-                    System.out.printf("%d. %s %s\n원", (i + 1), (koreaF[i]), koreaPrice[i]);
+                    System.out.printf("%d. %s %s원\n", (i + 1), (koreaF[i]), koreaPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
@@ -55,7 +55,7 @@ public class P01 {
             } else if (choice == 2) {//일식
                 System.out.println("---일식---");
                 for (int i = 0; i < japanF.length; i++) {
-                    System.out.printf("%d. %s %s\n원", (i + 1), (japanF[i]), japanPrice[i]);
+                    System.out.printf("%d. %s %s원\n", (i + 1), (japanF[i]), japanPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
@@ -66,7 +66,7 @@ public class P01 {
             } else if (choice == 3) {//중식
                 System.out.println("---중식---");
                 for (int i = 0; i < chinaF.length; i++) {
-                    System.out.printf("%d. %s %s\n원", (i + 1), (chinaF[i]), chinaPrice[i]);
+                    System.out.printf("%d. %s %s원\n", (i + 1), (chinaF[i]), chinaPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
@@ -77,7 +77,7 @@ public class P01 {
             } else if (choice == 4) {//양식
                 System.out.println("---양식---");
                 for (int i = 0; i < westF.length; i++) {
-                    System.out.printf("%d. %s %s\n원", (i + 1), (westF[i]), westPrice[i]);
+                    System.out.printf("%d. %s %s원\n", (i + 1), (westF[i]), westPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
@@ -88,7 +88,7 @@ public class P01 {
             } else if (choice == 5) {//디저트
                 System.out.println("---디저트---");
                 for (int i = 0; i < dessert.length; i++) {
-                    System.out.printf("%d. %s %s\n원", (i + 1), (dessert[i]), dessertPrice[i]);
+                    System.out.printf("%d. %s %s원\n", (i + 1), (dessert[i]), dessertPrice[i]);
                 }
                 System.out.println();
                 System.out.print("메뉴선택> ");
