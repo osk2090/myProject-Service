@@ -210,4 +210,4 @@ Release/
 html-exam/.gradle/
 .idea/
 .gitattributes
-.gradle/
+.gradle/out/
