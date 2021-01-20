@@ -1,10 +1,13 @@
-package com.osk2090.service;
+package com.osk2090.service.Nation;
+
+import com.osk2090.service.Delivery;
+import com.osk2090.util.MenuController;
 
 public class West {
     static String[] westF = {"피자", "치킨", "파스타", "스테이크", "햄버거"};//양식
     static int[] westPrice = {10000, 15000, 12000, 17000, 8000};
 
-    static void westF(int choice) {
+    public static void westF(int choice) {
         System.out.println("---양식---");
         MenuController.PrintMenu(westF.length, westF, westPrice);
         choice = MenuController.Choice();
