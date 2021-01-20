@@ -1,7 +1,10 @@
-package com.osk2090.service;
+package com.osk2090.util;
+
+import com.osk2090.service.Delivery;
+import com.osk2090.util.MenuController;
 
 public class Basket {
-    static void basket() {
+    public static void basket() {
         if (MenuController.cnt == 0) {
             System.out.println("현재 장바구니가 비어있습니다.");
         } else {
