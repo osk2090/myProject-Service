@@ -5,17 +5,10 @@ import com.osk2090.util.Basket;
 import com.osk2090.util.MenuController;
 
 public class Delivery {
-
-    static final int SIZE = 100;
-
-    public static String[] basket = new String[SIZE];//장바구니
-    public static int[] pay = new int[SIZE];//가격저장
-    public static int[] qArray = new int[SIZE];//수량저장
-
     public static void main(String[] args) {
 
         System.out.println("---배달의 민족---");
-        String printMenu = "1. 한식 2. 일식 3. 중식 4. 양식 5. 디저트";
+        String printMenu = "1. 한식 2. 일식 3. 중식 4. 양식 5. 디저트 9.종료";
 
         boolean run = true;
 
@@ -37,6 +30,9 @@ public class Delivery {
                 Dessert.dessertF(choice);
             } else if (choice == 0) {
                 Basket.basket();
+            } else if (choice == 9) {
+                System.out.println("종료");
+                run = false;
             } else {
                 System.out.println("없는 메뉴입니다.");
             }

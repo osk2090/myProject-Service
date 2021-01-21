@@ -1,6 +1,6 @@
 package com.osk2090.service.Nation;
 
-import com.osk2090.service.Delivery;
+import com.osk2090.service.Client_Info;
 import com.osk2090.util.MenuController;
 
 public class Dessert {
@@ -11,6 +11,6 @@ public class Dessert {
         System.out.println("---디저트---");
         MenuController.PrintMenu(dessert.length, dessert, dessertPrice);
         choice = MenuController.Choice();
-        MenuController.QandS(choice, dessert.length, Delivery.qArray, Delivery.basket, Delivery.pay, dessert, dessertPrice);
+        MenuController.QandS(choice, dessert.length, Client_Info.qArray, Client_Info.basket, Client_Info.pay, dessert, dessertPrice);
     }
 }

@@ -1,6 +1,6 @@
 package com.osk2090.service.Nation;
 
-import com.osk2090.service.Delivery;
+import com.osk2090.service.Client_Info;
 import com.osk2090.util.MenuController;
 
 public class China {
@@ -11,6 +11,6 @@ public class China {
         System.out.println("---중식---");
         MenuController.PrintMenu(chinaF.length, chinaF, chinaPrice);
         choice = MenuController.Choice();
-        MenuController.QandS(choice, chinaF.length, Delivery.qArray, Delivery.basket, Delivery.pay, chinaF, chinaPrice);
+        MenuController.QandS(choice, chinaF.length, Client_Info.qArray, Client_Info.basket, Client_Info.pay, chinaF, chinaPrice);
     }
 }
