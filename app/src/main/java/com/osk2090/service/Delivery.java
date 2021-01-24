@@ -14,7 +14,7 @@ public class Delivery {
         boolean run = true;
         String myId;
         String myPw;
-        int checkPoint = -1;
+        int checkPoint = -1;//로그아웃 상태
 
         while (run) {
             System.out.println("---로그인---");
@@ -25,9 +25,7 @@ public class Delivery {
                 checkPoint = 0;//로그인 됨
                 while (checkPoint == 0) {
                     System.out.println(printMenu);
-                    System.out.println("0.영수증 출력");
-                    System.out.print("메뉴선택> ");
-                    int choice = MenuController.scan.nextInt();
+                    int choice = Prompt.promptInt("0.영수증 출력\n메뉴선택> ");
 
                     if (choice == 1) {//한식
                         Korea.koreaF(choice);
@@ -43,7 +41,7 @@ public class Delivery {
                         Basket.basket();
                     } else if (choice == 9) {
                         System.out.println("로그아웃 합니다.");
-                        checkPoint = -1;
+                        checkPoint = -1;//로그아웃
                     } else {
                         System.out.println("없는 메뉴입니다.");
                     }
