@@ -1,4 +1,4 @@
-package com.osk2090.util;
+package com.osk2090.service.util;
 
 import com.osk2090.service.Client_Info;
 

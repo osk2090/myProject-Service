@@ -1,7 +1,8 @@
 package com.osk2090.service.Nation;
 
 import com.osk2090.service.Client_Info;
-import com.osk2090.util.MenuController;
+import com.osk2090.service.util.MenuController;
+import com.osk2090.service.util.Prompt;
 
 public class China {
     static String[] chinaF = {"짜장면", "짬뽕", "울면", "탕수육", "유산슬"};//중식
@@ -10,7 +11,7 @@ public class China {
     public static void chinaF(int choice) {
         System.out.println("---중식---");
         MenuController.PrintMenu(chinaF.length, chinaF, chinaPrice);
-        choice = MenuController.Choice();
+        choice = Prompt.promptInt("메뉴선택") - 1;
         MenuController.QandS(choice, chinaF.length, Client_Info.qArray, Client_Info.basket, Client_Info.pay, chinaF, chinaPrice);
     }
 }

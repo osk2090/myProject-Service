@@ -1,4 +1,4 @@
-package com.osk2090.util;
+package com.osk2090.service.util;
 
 import java.util.Scanner;
 
@@ -12,10 +12,10 @@ public class MenuController {
         System.out.println();
     }
 
-    public static int Choice() {//선택메서드
-        System.out.print("메뉴선택> ");
-        return scan.nextInt() - 1;
-    }
+//    public static int Choice() {//선택메서드
+//        System.out.print("메뉴선택> ");
+//        return scan.nextInt() - 1;
+//    }
 
     public static void QandS(int choice, int lenght, int[] qArray, String[] basket, int[] pay,
                       String[] mF, int[] mP) {//수량확인하고 장바구니저장
