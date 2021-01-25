@@ -4,16 +4,13 @@ import com.osk2090.Draw.util.AdminCheck;
 import com.osk2090.Draw.util.InputDrawInfo;
 import com.osk2090.Draw.util.Prompt;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Draw {
 
     static Scanner scan = new Scanner(System.in);
-    static Random ran = new Random();
 
     //1.당첨자가 나왔다 그리고 신발 수령시 이름과 생년월일을 확인해서 다르면 미수령으로 돌린다
-    //2.전화번호와 생년월일 숫자수를 세서 옳바른 길이의 문자열인지 확인하는 메서드
 
     public static void main(String[] args) {
         InputDrawInfo inputDrawInfo = new InputDrawInfo();
@@ -29,9 +26,23 @@ public class Draw {
                     System.out.println("다시 동의하시기 바랍니다.");
                 }
             } else if (choice == 2) {
-                if (AdminCheck.checkResult()) {
-                    Admin.AdminPrintList();
-                }
+                    if (AdminCheck.checkResult()) {
+                        run = true;
+                        choice = Prompt.promptInt("1. 추첨하기 2. 응모자리스트 3. 로그아웃");
+                        while (run) {
+                            if (choice == 1) {
+                                System.out.println("추첨하겠습니다.");
+                                Admin.WinnerResult();
+                            } else if (choice == 2) {
+                                Admin.AdminPrintList();
+                            } else if (choice == 3) {
+                                System.out.println("로그아웃 되었습니다.");
+                                break;
+                            } else {
+                                System.out.println("없는 메뉴 입니다.");
+                            }
+                        }
+                    }
             } else {
                 System.out.println("다시 선택해주세요.");
             }
