@@ -18,7 +18,7 @@ public class InputDrawInfo {
         c.name = Prompt.promptString("정보입력\n응모자 이름: ");
         c.pN = Prompt.promptInt("응모자 전화번호\n예)01012345678-11자리:");
         c.bN = Prompt.promptInt("응모자 생년월일\n예)900101:");
-        c.id = Prompt.promptString("나이키 닷컴 아이디를 기재해주세요.\n*나이키 멤버만 구매 가능합니다.\n");
+        c.id = Prompt.promptString("나이키 닷컴 아이디를 기재해주세요.\n*나이키 멤버만 구매 가능합니다.");
 
         System.out.println("NIKE DUNK LOW RETRO (DD1391-100)");
         System.out.println("금액: 119.000");
