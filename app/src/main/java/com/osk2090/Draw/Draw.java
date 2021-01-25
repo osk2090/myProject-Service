@@ -17,7 +17,7 @@ public class Draw {
 
     public static void main(String[] args) {
         InputDrawInfo inputDrawInfo = new InputDrawInfo();
-
+        
         boolean run = true;
         while (run) {
             int choice = Prompt.promptInt("-Nike-\n\"-Draw-\n1. 응모자 2. 관리자");
