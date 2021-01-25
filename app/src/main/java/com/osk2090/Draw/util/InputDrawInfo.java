@@ -25,16 +25,18 @@ public class InputDrawInfo {
         for (int i = 0; i < SHOE_SIZE.length; i++) {
             System.out.println(SHOE_SIZE[i]);
         }
-
-        mySize = Prompt.promptInt("사이즈 선택:");
-        if (ClientSizeCheck.sizeCheck(mySize)) {
-            System.out.println("사이즈 확인됨");
-            c.size = mySize;
-            this.clients[this.idx++] = c;
-            System.out.println("응모에 참여해주셔서 감사합니다.");
-        } else {
-            System.out.println("없는 사이즈 입니다.");
-            return;
+        boolean run = true;
+        while (run) {
+            mySize = Prompt.promptInt("사이즈 선택:");
+            if (ClientSizeCheck.sizeCheck(mySize)) {
+                System.out.println("사이즈 확인됨");
+                c.size = mySize;
+                this.clients[this.idx++] = c;
+                System.out.println("응모에 참여해주셔서 감사합니다.");
+                run = false;
+            } else {
+                System.out.println("없는 사이즈 입니다.");
+            }
         }
     }
 
