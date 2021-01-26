@@ -1,14 +1,13 @@
 package com.osk2090.Draw.util;
 
-import com.osk2090.Draw.CLIENT_ROOM.ClientInfo;
+import com.osk2090.Draw.InputDrawInfo;
 
 public class ClientSizeCheck {
     //있는 사이즈인지 체크하는 메서드
     static boolean sizeCheck(int mySize) {
-        InputDrawInfo d = new InputDrawInfo();
         while (true) {
-            for (int i = 0; i < d.SHOE_SIZE.length; i++) {
-                if (d.SHOE_SIZE[i] == mySize) {
+            for (int i = 0; i < InputDrawInfo.SHOE_SIZE.length; i++) {
+                if (InputDrawInfo.SHOE_SIZE[i] == mySize) {
                     return true;
                 }
             }
@@ -16,7 +15,7 @@ public class ClientSizeCheck {
         }
     }
 
-    static void finSizeCheck(ClientInfo c, int mySize) {
+    public static void finSizeCheck(InputDrawInfo.ClientInfo c, int mySize) {
         boolean run = true;
         while (run) {
             mySize = Prompt.promptInt("사이즈 선택:");

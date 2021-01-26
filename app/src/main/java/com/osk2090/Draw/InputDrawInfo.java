@@ -1,18 +1,25 @@
-package com.osk2090.Draw.util;
+package com.osk2090.Draw;
 
-import com.osk2090.Draw.CLIENT_ROOM.ClientInfo;
+import com.osk2090.Draw.util.ClientSizeCheck;
+import com.osk2090.Draw.util.Prompt;
 
 public class InputDrawInfo {
-
+    public static class ClientInfo {
+        //응모자 정보
+        public String name;//응모자 이름
+        public String pN;//응모자 전화번호
+        public String bN;//응모자 생년월일
+        public String id;//응모자 나이키 아이디
+        public int size;//응모자 사이즈
+    }
     public static final int LENGHT = 1000;//응모자 가능 수
     public static int idx = 0;//회원정보 저장 위치
     static int mySize;
 
-    static int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
-
+    public static int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
     public static ClientInfo[] clients = new ClientInfo[LENGHT];
 
-    public static int inputInfo() {//응모자 정보 저장
+    public static void inputInfo() {//응모자 정보 저장
         ClientInfo c = new ClientInfo();
 
         c.name = Prompt.promptString("정보입력\n응모자 이름: ");
@@ -28,7 +35,6 @@ public class InputDrawInfo {
             System.out.println(SHOE_SIZE[i]);
         }
         ClientSizeCheck.finSizeCheck(c, mySize);
-        return idx;
     }
 
     public static void list(int length) {

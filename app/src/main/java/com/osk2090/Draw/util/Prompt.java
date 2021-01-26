@@ -1,6 +1,6 @@
 package com.osk2090.Draw.util;
 
-import com.osk2090.Draw.CLIENT_ROOM.ClientInfo;
+import com.osk2090.Draw.InputDrawInfo;
 
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class Prompt {
         return false;
     }
 
-    public static void booleanResult_PN(ClientInfo c, String title) {
+    public static void booleanResult_PN(InputDrawInfo.ClientInfo c, String title) {
         boolean check = true;
         while (check) {
             c.pN = Prompt.promptString(title);
@@ -43,7 +43,7 @@ public class Prompt {
         }
     }
 
-    public static void booleanResult_BN(ClientInfo c, String title) {
+    public static void booleanResult_BN(InputDrawInfo.ClientInfo c, String title) {
         boolean check = true;
         while (check) {
             c.bN = Prompt.promptString(title);

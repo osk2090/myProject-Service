@@ -1,6 +1,5 @@
 package com.osk2090.Draw;
 
-import com.osk2090.Draw.util.InputDrawInfo;
 import com.osk2090.Draw.util.Prompt;
 
 import java.util.Scanner;
@@ -13,10 +12,10 @@ public class Draw {
     public static void main(String[] args) {
         InputDrawInfo inputDrawInfo = new InputDrawInfo();
         boolean run = true;
+        String winnerTitle = "현재 당첨자: ";
 
         while (run) {
             int choice = Prompt.promptInt("-Nike-\n-Draw-\n1. 응모자 2. 관리자 3. 당첨자 수령하기");
-
             if (choice == 1) {
                 if (Agreement.Agree()) {
                     inputDrawInfo.inputInfo();
@@ -24,9 +23,16 @@ public class Draw {
                     System.out.println("다시 동의하시기 바랍니다.");
                 }
             } else if (choice == 2) {
-                Admin.AdminLogic();
+                    Admin.AdminLogic();
             } else if (choice == 3) {
-                Admin.WinnerCheck(Admin.WinnerResult());
+                if (InputDrawInfo.idx == 0) {
+                    System.out.println("입력된 응모자가 없습니다.");
+                } else {
+                    Admin.WinnerCheck(InputDrawInfo.clients[Admin.WinnerResult()].name,
+                            InputDrawInfo.clients[Admin.WinnerResult()].id,
+                            InputDrawInfo.clients[Admin.WinnerResult()].size,
+                            Admin.WinnerResult());
+                }
             } else {
                 System.out.println("다시 선택해주세요.");
             }
