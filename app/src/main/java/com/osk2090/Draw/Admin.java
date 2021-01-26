@@ -25,7 +25,7 @@ public class Admin {
     }
     System.out.println("당첨자:" + InputDrawInfo.clients[n].name);
     System.out.println("축하합니다!");
-    return n;
+    return Draw.n = n;
   }
 
   public static void AdminLogic() {
@@ -58,9 +58,6 @@ public class Admin {
           System.out.println("없는 메뉴 입니다.");
         }
       }
-    } else {
-      System.out.println("관리자 로그인 후 사용가능");
-      return;
     }
   }
 
@@ -84,12 +81,19 @@ public class Admin {
 
     if (winnerName.equals(name) && winnerId.equals(id) && winnerSize == size) {
       System.out.println("정보가 확인되었습니다. 수령해가시기 바랍니다.");
+      InputDrawInfo.clients[n].id = null;
+      InputDrawInfo.clients[n].name = "수령자";
+      InputDrawInfo.clients[n].size = 0;
+      InputDrawInfo.clients[n].bN = null;
+      InputDrawInfo.clients[n].pN = null;
       return;
     } else {
       System.out.println("정보가 틀립니다.수령하실수 없습니다.");
-      InputDrawInfo.clients[n].id = null;//해당 당첨자 정보 삭제
-      InputDrawInfo.clients[n].name = null;//해당 당첨자 정보 삭제
-      InputDrawInfo.clients[n].size = 0;//해당 당첨자 정보 삭제
+      InputDrawInfo.clients[n].id = null;
+      InputDrawInfo.clients[n].name = "미수령자";
+      InputDrawInfo.clients[n].size = 0;
+      InputDrawInfo.clients[n].bN = null;
+      InputDrawInfo.clients[n].pN = null;
       System.out.println("응모자 정보를 삭제겠습니다.");
       return;
     }
