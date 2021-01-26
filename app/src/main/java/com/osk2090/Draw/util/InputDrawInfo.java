@@ -12,7 +12,7 @@ public class InputDrawInfo {
 
     public static ClientInfo[] clients = new ClientInfo[LENGHT];
 
-    public void inputInfo() {//응모자 정보 저장
+    public static int inputInfo() {//응모자 정보 저장
         ClientInfo c = new ClientInfo();
 
         c.name = Prompt.promptString("정보입력\n응모자 이름: ");
@@ -22,18 +22,19 @@ public class InputDrawInfo {
 
         c.id = Prompt.promptString("나이키 닷컴 아이디를 기재해주세요.\n*나이키 멤버만 구매 가능합니다.");
 
-        System.out.println("NIKE DUNK LOW RETRO (DD1391-100)");
-        System.out.println("금액: 119.000");
+        System.out.println("NIKE DUNK LOW RETRO (DD1390-100)");
+        System.out.println("금액: 129.000 krw");
         for (int i = 0; i < SHOE_SIZE.length; i++) {
             System.out.println(SHOE_SIZE[i]);
         }
         ClientSizeCheck.finSizeCheck(c, mySize);
+        return idx;
     }
 
-    public static void list() {
-        for (int i = 0; i < InputDrawInfo.idx; i++) {
+    public static void list(int length) {
+        for (int i = 0; i < length; i++) {
             ClientInfo c = clients[i];
-            System.out.printf("이름: %s 전화번호: %s 생년월일: %s 아이다: %s 사이즈: %s\n",
+            System.out.printf("이름: %s 전화번호: %s 생년월일: %s 아이디: %s 사이즈: %s\n",
                     c.name, c.pN, c.bN, c.id, c.size);
         }
     }
