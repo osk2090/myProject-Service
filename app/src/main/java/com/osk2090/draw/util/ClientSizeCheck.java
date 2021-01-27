@@ -1,6 +1,6 @@
-package com.osk2090.Draw.util;
+package com.osk2090.draw.util;
 
-import com.osk2090.Draw.InputDrawInfo;
+import com.osk2090.draw.InputDrawInfo;
 
 public class ClientSizeCheck {
     //있는 사이즈인지 체크하는 메서드

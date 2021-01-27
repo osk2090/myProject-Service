@@ -1,6 +1,6 @@
-package com.osk2090.Draw;
+package com.osk2090.draw;
 
-import com.osk2090.Draw.util.Prompt;
+import com.osk2090.draw.util.Prompt;
 
 import java.util.Random;
 

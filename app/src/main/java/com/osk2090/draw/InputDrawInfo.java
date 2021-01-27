@@ -1,7 +1,7 @@
-package com.osk2090.Draw;
+package com.osk2090.draw;
 
-import com.osk2090.Draw.util.ClientSizeCheck;
-import com.osk2090.Draw.util.Prompt;
+import com.osk2090.draw.util.ClientSizeCheck;
+import com.osk2090.draw.util.Prompt;
 
 public class InputDrawInfo {
     public static class ClientInfo {

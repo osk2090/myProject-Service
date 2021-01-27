@@ -1,6 +1,6 @@
-package com.osk2090.Draw.util;
+package com.osk2090.draw.util;
 
-import com.osk2090.Draw.InputDrawInfo;
+import com.osk2090.draw.InputDrawInfo;
 
 import java.util.Scanner;
 

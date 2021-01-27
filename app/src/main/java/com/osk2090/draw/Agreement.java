@@ -1,4 +1,4 @@
-package com.osk2090.Draw;
+package com.osk2090.draw;
 
 public class Agreement {
     public static boolean Agree() {
