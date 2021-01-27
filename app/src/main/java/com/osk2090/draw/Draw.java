@@ -6,27 +6,26 @@ import java.util.Scanner;
 
 public class Draw {
     static Scanner scan = new Scanner(System.in);
-    static int n = -1;//생성자를 위한 변수
+    static int r = -1;//생성자를 위한 변수
 
     public Draw() {
-        this.n = n;
+        this.r = r;
     }
 
     public static void main(String[] args) {
-        InputDrawInfo inputDrawInfo = new InputDrawInfo();
         boolean run = true;
         String winnerTitle = "현재 당첨자: ";
 
         while (run) {
-            if (n == -1) {
+            if (r == -1) {
                 System.out.println(winnerTitle + "없음");
             } else {
-                System.out.println(winnerTitle + InputDrawInfo.clients[n].name + " 님.");
+                System.out.println(winnerTitle + InputDrawInfo.clients[r].name + " 님.");
             }
             int choice = Prompt.promptInt("-Nike-\n-Draw-\n1. 응모자 2. 관리자 3. 당첨자 수령하기");
             if (choice == 1) {
                 if (Agreement.Agree()) {
-                    inputDrawInfo.inputInfo();
+                    InputDrawInfo.inputInfo();
                 } else {
                     System.out.println("다시 동의하시기 바랍니다.");
                 }
@@ -36,8 +35,8 @@ public class Draw {
                 if (InputDrawInfo.idx == 0) {
                     System.out.println("입력된 응모자가 없습니다.");
                 } else {
-                    Admin.WinnerCheck(InputDrawInfo.clients[n].name, InputDrawInfo.clients[n].id,
-                            InputDrawInfo.clients[n].size, n);
+                    Admin.WinnerCheck(InputDrawInfo.clients[r].name, InputDrawInfo.clients[r].id,
+                            InputDrawInfo.clients[r].size, r);
                 }
             } else {
                 System.out.println("다시 선택해주세요.");

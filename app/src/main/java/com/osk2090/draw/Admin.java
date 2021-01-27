@@ -15,7 +15,7 @@ public class Admin {
   static boolean run = true;
 
   public static int WinnerResult() {
-    int n = ran.nextInt(InputDrawInfo.idx);
+    int r = ran.nextInt(InputDrawInfo.idx);
     for (int i = 3; i >= 1; i--) {
       try {
         Thread.sleep(1000);
@@ -24,15 +24,15 @@ public class Admin {
       }
       System.out.printf("%d! ", i);
     }
-//    if (InputDrawInfo.clients[n].name.equals("수령자") || InputDrawInfo.clients[n].name.equals("미수령자")) {//수령자/미수령자 중복체크하는거 보수하기
+//    if (InputDrawInfo.clients[r].name.equals("수령자") || InputDrawInfo.clients[r].name.equals("미수령자")) {//수령자/미수령자 중복체크하는거 보수하기
 //      while (run) {
-//        n = ran.nextInt(InputDrawInfo.idx);
+//        r = ran.nextInt(InputDrawInfo.idx);
 //        run = false;
 //      }
 //    }
-    System.out.println("당첨자:" + InputDrawInfo.clients[n].name);
+    System.out.println("당첨자:" + InputDrawInfo.clients[r].name);
     System.out.println("축하합니다!");
-    return Draw.n = n;
+    return Draw.r = r;
   }
 
   public static void AdminLogic() {
