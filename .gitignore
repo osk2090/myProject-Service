@@ -211,3 +211,4 @@ html-exam/.gradle/
 .idea/
 .gitattributes
 .gradle/out/
+out/
