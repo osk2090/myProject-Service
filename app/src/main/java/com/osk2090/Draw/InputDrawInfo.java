@@ -14,10 +14,10 @@ public class InputDrawInfo {
     }
     public static final int LENGHT = 1000;//응모자 가능 수
     public static int idx = 0;//회원정보 저장 위치
-    static int mySize;
 
     public static int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
     public static ClientInfo[] clients = new ClientInfo[LENGHT];
+    static int mySize;
 
     public static void inputInfo() {//응모자 정보 저장
         ClientInfo c = new ClientInfo();

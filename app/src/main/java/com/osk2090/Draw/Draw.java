@@ -19,7 +19,7 @@ public class Draw {
 
         while (run) {
             if (n == -1) {
-                System.out.println(winnerTitle + "업음");
+                System.out.println(winnerTitle + "없음");
             } else {
                 System.out.println(winnerTitle + InputDrawInfo.clients[n].name + " 님.");
             }
