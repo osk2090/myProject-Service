@@ -5,7 +5,6 @@ import com.osk2090.draw.util.Prompt;
 
 public class InputDrawInfo {
     public static class ClientInfo {
-        //응모자 정보
         public String name;//응모자 이름
         public String pN;//응모자 전화번호
         public String bN;//응모자 생년월일

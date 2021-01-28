@@ -6,11 +6,7 @@ import java.util.Scanner;
 
 public class Draw {
     static Scanner scan = new Scanner(System.in);
-    static int r = -1;//생성자를 위한 변수
-
-    public Draw() {
-        this.r = r;
-    }
+    static int r = -1;//당첨자확인
 
     public static void main(String[] args) {
         boolean run = true;
