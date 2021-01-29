@@ -12,7 +12,6 @@ public class Admin {
 
   public static String myAdminId;
   public static int myAdminPw;
-  static boolean run = true;
 
   public static int WinnerResult() {
     int r = ran.nextInt(InputDrawInfo.idx);
@@ -24,12 +23,6 @@ public class Admin {
       }
       System.out.printf("%d! ", i);
     }
-//    if (InputDrawInfo_1.clients[r].name.equals("수령자") || InputDrawInfo_1.clients[r].name.equals("미수령자")) {//수령자/미수령자 중복체크하는거 보수하기
-//      while (run) {
-//        r = ran.nextInt(InputDrawInfo_1.idx);
-//        run = false;
-//      }
-//    }
     System.out.println("당첨자:" + InputDrawInfo.clients[r].name);
     System.out.println("축하합니다!");
     return Draw.r = r;
@@ -88,27 +81,17 @@ public class Admin {
 
     if (winnerName.equals(name) && winnerId.equals(id) && winnerSize == size) {
       System.out.println("정보가 확인되었습니다. 수령해가시기 바랍니다.");
-//      InputDrawInfo.clients[n].id = null;
-//      InputDrawInfo.clients[n].name = "수령자";
-//      InputDrawInfo.clients[n].size = 0;
-//      InputDrawInfo.clients[n].bN = null;
-//      InputDrawInfo.clients[n].pN = null;
       moveClient(n);
       return;
     } else {
       System.out.println("정보가 틀립니다.수령하실수 없습니다.");
-//      InputDrawInfo.clients[n].id = null;
-//      InputDrawInfo.clients[n].name = "미수령자";
-//      InputDrawInfo.clients[n].size = 0;
-//      InputDrawInfo.clients[n].bN = null;
-//      InputDrawInfo.clients[n].pN = null;
       System.out.println("응모자 정보를 삭제겠습니다.");
       moveClient(n);
       return;
     }
   }
 
-  public static void moveClient(int n) {
+  public static void moveClient(int n) {//수령하거나 정보를 틀려 수령하지 못한 당첨자의 정보를 삭제한다
     for (int i = n; i < InputDrawInfo.idx; i++) {
       InputDrawInfo.clients[i] = InputDrawInfo.clients[i + 1];
       InputDrawInfo.clients[--InputDrawInfo.idx] = null;
