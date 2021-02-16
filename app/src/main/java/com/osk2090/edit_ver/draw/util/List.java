@@ -1,8 +1,10 @@
 package com.osk2090.edit_ver.draw.util;
 
-public class List {
-    private Node first;
-    private Node last;
+import java.lang.reflect.Array;
+
+public class List<E> {
+    private Node<E> first;
+    private Node<E> last;
 
     protected static int size = 0;
 
@@ -14,8 +16,8 @@ public class List {
         return List.size;
     }
 
-    public void add(Object obj) {
-        Node node = new Node(obj);
+    public void add(E obj) {
+        Node<E> node = new Node<>(obj);
 
         if (last == null) {
             last = node;
@@ -29,7 +31,7 @@ public class List {
 
     public Object[] toArray() {
         Object[] arr = new Object[size];
-        Node cursor = this.first;
+        Node<E> cursor = this.first;
         int i = 0;
 
         while (cursor != null) {
@@ -39,12 +41,27 @@ public class List {
         return arr;
     }
 
-    public Object get(int index) {
+    @SuppressWarnings("unchecked")
+    public E[] toArray(E[] arr) {
+        if (arr.length < size()) {
+            arr = (E[]) Array.newInstance(arr.getClass().getComponentType(), size());
+        }
+        Node<E> cursor = this.first;
+        int i = 0;
+
+        while (cursor != null) {
+            arr[i++] = cursor.obj;
+            cursor = cursor.next;
+        }
+        return arr;
+    }
+
+    public E get(int index) {
         if (index < 0 || index >= this.size) {
             return null;
         }
         int count = 0;
-        Node cursor = first;
+        Node<E> cursor = first;
 
         while (cursor != null) {
             if (index == count++) {
@@ -55,8 +72,8 @@ public class List {
         return null;
     }
 
-    public boolean delete(Object obj) {
-        Node cursor = first;
+    public boolean delete(E obj) {
+        Node<E> cursor = first;
         while (cursor != null) {
             if (cursor.obj.equals(obj)) {
                 this.size--;
@@ -83,13 +100,13 @@ public class List {
         return false;
     }
 
-    public Object delete(int index) {
+    public E delete(int index) {
         if (index < 0 || index >= this.size) {
             return null;
         }
-        Object deleted = null;
+        E deleted = null;
         int count = 0;
-        Node cursor = first;
+        Node<E> cursor = first;
         while (cursor != null) {
             if (index == count++) {
                 deleted = cursor.obj;
@@ -117,43 +134,45 @@ public class List {
         return deleted;//마지막에 삭제된 데이터를 리턴
     }
 
-    private static class Node {
+    private static class Node<T> {
         /*
         다형적 변수
         해당 클래스의 객체(인스턴스의 주소)뿐만 아니라
         그 하위 클래스의 객체(인스턴스의 주소)까지 저장할 수 있다
          */
-        Object obj;
-        Node next;
-        Node prev;
+        T obj;
+        Node<T> next;
+        Node<T> prev;
 
-        Node(Object obj) {
+        Node(T obj) {
             this.obj = obj;
         }
     }
 
-    public int indexOf(Object obj) {
-        Object[] list = this.toArray();
-        for (int i = 0; i < list.length; i++) {
-            if (list[i].equals(obj)) {//주소값이 같은지 비교
-                return i;
+    public int indexOf(E obj) {
+        int index = 0;
+        Node<E> cursor = first;
+        while (cursor != null) {
+            if (cursor.obj == obj) {
+                return index;
             }
+            cursor = cursor.next;
+            index++;
         }
         return -1;
     }
 
-    public Iterator iterator() throws CloneNotSupportedException {
-       class ListIterator implements Iterator {
-           int cursor = 0;
+    public Iterator<E> iterator() throws CloneNotSupportedException {
+        return new Iterator<E>() {
+            int cursor = 0;
 
-           public boolean hasNext() {
-               return cursor < List.this.size;
-           }
+            public boolean hasNext() {
+                return cursor < List.this.size;
+            }
 
-           public Object next() {
-               return List.this.get(cursor++);
-           }
-       }
-        return new ListIterator();
+            public E next() {
+                return List.this.get(cursor++);
+            }
+        };
     }
 }

@@ -6,8 +6,9 @@ import com.osk2090.edit_ver.draw.util.List;
 import com.osk2090.edit_ver.draw.util.Prompt;
 
 public class ClientHandler {
-    private static List clientList = new List();
+    private static List<Client> clientList = new List<>();
 
+    //신발 출력할때 줄을 나열해서 출력하기
     int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
     int mySize = 0;
 

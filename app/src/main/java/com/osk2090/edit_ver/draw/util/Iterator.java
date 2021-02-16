@@ -1,7 +1,7 @@
 package com.osk2090.edit_ver.draw.util;
 
-public interface Iterator {
+public interface Iterator<E> {
     boolean hasNext();
 
-    Object next();
+    E next();
 }

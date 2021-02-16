@@ -40,10 +40,7 @@ public class Admin {
   static String winnerTitle = "현재 당첨자: ";
   static Random ran = new Random();
 
-  static int winnerResult() {
-    List clientList = new List();
-    setR(ran.nextInt(List.size()));
-
+  static void winnerResult() {
     for (int i = 3; i >= 1; i--) {
       try {
         Thread.sleep(1000);
@@ -52,11 +49,14 @@ public class Admin {
       }
       System.out.printf("%d! ", i);
     }
-    //java.lang.NullPointerException 에러!!!
-    Client c = (Client) clientList.get(getR());
-    System.out.println("당첨자:" + c.getName());
+//    int rr = ran.nextInt(List.size());
+    Client client = findByNo(ran.nextInt(List.size()));
+    if (client == null) {
+      return;
+    }
+    System.out.println("당첨자:" + client.getName());
     System.out.println("축하합니다!");
-    return r;
+    r = client.getIdx();//당첨자 인덱스 저장
   }
 
   static void adminLogic() throws CloneNotSupportedException {
@@ -126,7 +126,18 @@ public class Admin {
     if (getR() == -1) {
       System.out.println(winnerTitle + "없음");
     } else {
-      System.out.println(winnerTitle + clientList.get(winnerResult()) + " 님.");
+      System.out.println(winnerTitle + clientList.get(r) + " 님.");
     }
+  }
+
+  private static Client findByNo(int clientNo) {
+    Object[] list = clientList.toArray();
+    for (Object obj : list) {
+      Client c = (Client) obj;
+      if (c.getIdx() == clientNo) {
+        return c;
+      }
+    }
+    return null;
   }
 }
