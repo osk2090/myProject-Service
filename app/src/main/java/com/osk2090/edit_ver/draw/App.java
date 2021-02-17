@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class App {
     //사용자가 입력한 명령을 저장할 컬렉션 객체 준비
-    static Stack commandStack = new Stack();
-    static Queue commandQueue = new Queue();
+    static Stack<Integer> commandStack = new Stack<>();
+    static Queue<Integer> commandQueue = new Queue<>();
 
     static Scanner scan = new Scanner(System.in);
 
@@ -29,8 +29,6 @@ public class App {
             if (choice == 1) {
                 if (Agreement.Agree()) {
                     clientHandler.add();
-                } else {
-                    System.out.println("다시 동의하시기 바랍니다.");
                 }
             } else if (choice == 2) {
                 int check = Admin.checkResult();
@@ -38,7 +36,7 @@ public class App {
                     admin.adminLogic();
                 } else {
                     System.out.println("관리자의 아이디와 비밀번호를 확인해주세요.");
-                    return;
+                    choice = Prompt.promptInt("-Nike-\n-Draw-\n1. 응모자 2. 관리자 3. 당첨자 수령하기 4.History");
                 }
             } else if (choice == 3) {
                 if (List.size() == 0) {
@@ -56,7 +54,7 @@ public class App {
         }
     }
 
-    static void printCommandHistory(Iterator iterator) {
+    static void printCommandHistory(Iterator<Integer> iterator) {
 
         int count = 0;
         while (iterator.hasNext()) {

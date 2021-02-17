@@ -21,8 +21,12 @@ public class ClientHandler {
         System.out.println("NIKE DUNK LOW RETRO (DD1390-100)");
         System.out.println("금액: 129.000 krw");
         for (int i = 0; i < SHOE_SIZE.length; i++) {
-            System.out.println(SHOE_SIZE[i]);
+            if (i % 5 == 0) {
+                System.out.println();//두줄로 나누기
+            }
+            System.out.print(SHOE_SIZE[i] + " ");
         }
+        System.out.println();
         finSizeCheck(c, mySize);
     }
 
@@ -57,11 +61,22 @@ public class ClientHandler {
 
     public static void list() throws CloneNotSupportedException {
         System.out.println("응모자 목록");
-        Iterator iterator = clientList.iterator();
+        Iterator<Client> iterator = clientList.iterator();
         while (iterator.hasNext()) {
-            Client c1 = (Client) iterator.next();
+            Client c1 = iterator.next();
             System.out.printf("%d. 이름: %s 전화번호: %s 생년월일: %s 아이디: %s 사이즈: %s\n",
                     c1.getIdx(), c1.getName(), c1.getpN(), c1.getbN(), c1.getId(), c1.getcSize());
         }
+    }
+
+    protected static Client findByNo(int clientNo) {
+        Object[] list = clientList.toArray();
+        for (Object obj : list) {
+            Client c = (Client) obj;
+            if (c.getIdx() == clientNo) {
+                return c;
+            }
+        }
+        return null;
     }
 }

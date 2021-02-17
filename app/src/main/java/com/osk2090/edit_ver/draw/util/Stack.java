@@ -1,38 +1,37 @@
 package com.osk2090.edit_ver.draw.util;
 
-public class Stack extends List implements Cloneable {
-    public Object push(Object item) {
+public class Stack<E> extends List<E> implements Cloneable {
+    public E push(E item) {
         this.add(item);
         return item;
     }
 
-    public Object pop() {
-        return this.delete(this.size - 1);
+    public E pop() {
+        return (E) this.delete(this.size - 1);
     }
 
     @Override
-    public Stack clone() throws CloneNotSupportedException {
+    public Stack<E> clone() throws CloneNotSupportedException {
 
-        Stack stack = new Stack();
+        Stack<E> stack = new Stack<>();
         for (int i = 0; i < this.size; i++) {
-            stack.push(this.get(i));
+            stack.push((E) this.get(i));
         }
         return stack;
     }
 
-    public Iterator iterator() throws CloneNotSupportedException {
-        Stack stack = this.clone();
+    public Iterator<E> iterator() throws CloneNotSupportedException {
+        Stack<E> stack = this.clone();
 
-        class StackIterator implements Iterator {
+        return new Iterator<E>() {
 
             public boolean hasNext() {
                 return Stack.this.size > 0;
             }
 
-            public Object next() {
+            public E next() {
                 return Stack.this.pop();
             }
-        }
-        return new StackIterator();
+        };
     }
 }

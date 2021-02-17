@@ -1,7 +1,7 @@
 package com.osk2090.edit_ver.draw.util;
 
-public class Queue extends List implements Cloneable {
-    public boolean offer(Object e) {
+public class Queue<E> extends List<E> implements Cloneable {
+    public boolean offer(E e) {
         this.add(e);
         return true;
     }
@@ -10,26 +10,30 @@ public class Queue extends List implements Cloneable {
         return this.delete(0);//처음부터 빼낸다
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Queue clone() throws CloneNotSupportedException {
-        Queue queue = new Queue();
+    public Queue<E> clone() throws CloneNotSupportedException {
+        Queue<E> queue = new Queue<>();
         Object[] values = this.toArray();
         for (Object value : values) {
-            queue.offer(value);
+            queue.offer((E) value);
         }
         return queue;
     }
 
-    public Iterator iterator() throws CloneNotSupportedException {
-        Queue clone = this.clone();
-        class QueueIterator implements Iterator {
+    public Iterator<E> iterator() throws CloneNotSupportedException {
+        Queue<E> queue = this.clone();
+
+        return new Iterator<E>() {
+            @Override
             public boolean hasNext() {
-                return Queue.this.size() > 0;
+                return queue.size() > 0;
             }
-            public Object next() {
-                return Queue.this.poll();
+
+            @Override
+            public E next() {
+                return (E) queue.poll();
             }
-        }
-        return new QueueIterator();
+        };
     }
 }

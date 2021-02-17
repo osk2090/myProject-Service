@@ -49,8 +49,7 @@ public class Admin {
       }
       System.out.printf("%d! ", i);
     }
-//    int rr = ran.nextInt(List.size());
-    Client client = findByNo(ran.nextInt(List.size()));
+    Client client = ClientHandler.findByNo(ran.nextInt(List.size() - 1));
     if (client == null) {
       return;
     }
@@ -79,7 +78,7 @@ public class Admin {
           break;
         } else {
           ClientHandler.list();
-          break;
+          choice = Prompt.promptInt("1. 추첨하기 2. 응모자리스트 3. 로그아웃");
         }
       } else if (choice == 3) {
         System.out.println("로그아웃 되었습니다.");
@@ -128,16 +127,5 @@ public class Admin {
     } else {
       System.out.println(winnerTitle + clientList.get(r) + " 님.");
     }
-  }
-
-  private static Client findByNo(int clientNo) {
-    Object[] list = clientList.toArray();
-    for (Object obj : list) {
-      Client c = (Client) obj;
-      if (c.getIdx() == clientNo) {
-        return c;
-      }
-    }
-    return null;
   }
 }
