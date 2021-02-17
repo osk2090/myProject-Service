@@ -1,16 +1,18 @@
 package com.osk2090.edit_ver.draw;
 
 import com.osk2090.edit_ver.draw.domain.Client;
-import com.osk2090.edit_ver.draw.util.Iterator;
-import com.osk2090.edit_ver.draw.util.List;
 import com.osk2090.edit_ver.draw.util.Prompt;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class ClientHandler {
-    private static List<Client> clientList = new List<>();
+    private static ArrayList<Client> clientList = new ArrayList<>();
 
     //신발 출력할때 줄을 나열해서 출력하기
     int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
     int mySize = 0;
+//    int cnt = 0;
 
     public void add() {
         Client c = new Client();
@@ -37,8 +39,7 @@ public class ClientHandler {
             if (sizeCheck(mySize) != -1) {
                 System.out.println("사이즈 확인됨");
                 c.setcSize(mySize);
-                c.setIdx(List.size());//인덱스 자동으로 넣기
-                List.setSize(List.size() + 1);//그리고 +1증가해서 다시 넣기
+                c.setIdx(clientList.size());//인덱스 자동으로 넣기
                 clientList.add(c);//최종저장
                 System.out.println("응모에 참여해주셔서 감사합니다.");
                 run = false;
@@ -69,14 +70,15 @@ public class ClientHandler {
         }
     }
 
-    protected static Client findByNo(int clientNo) {
-        Object[] list = clientList.toArray();
-        for (Object obj : list) {
-            Client c = (Client) obj;
-            if (c.getIdx() == clientNo) {
-                return c;
-            }
-        }
-        return null;
+    public int showClients() {//카운팅
+        return clientList.size();
+    }
+
+    public Client getInfo(int clientNo) {//정보가져오기
+        return clientList.get(clientNo);
+    }
+
+    public void removeClinet(int clientNo) {
+        clientList.remove(clientNo);
     }
 }

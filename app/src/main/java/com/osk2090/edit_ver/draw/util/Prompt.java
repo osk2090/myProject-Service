@@ -13,7 +13,6 @@ public class Prompt {
     }
 
     public static int promptInt(String title) {//정수입력
-//        return Integer.parseInt(promptString(title));//이전 기능
         String temp = promptString(title);
 
         while (!temp.matches("^[0-9]*$")) {//숫자가 안나오면
@@ -29,8 +28,6 @@ public class Prompt {
         return Integer.parseInt(temp);
     }
 
-
-
     //y/n만 입력받는 프롬프트
     public static String promptAgreeString(String title) {//문자열입력
         System.out.println(title);
@@ -42,16 +39,15 @@ public class Prompt {
         return temp;
     }
 
-
     public static boolean PhoneNumberCheck(String number) {
-        if (number.length() == 11) {
+        if (number.matches("^[0-9]*$") || number.length() == 11) {//숫자만 있어야되고 길이가 맞게
             return true;
         }
         return false;
     }
 
     public static boolean BirthNumberCheck(String number) {
-        if (number.length() == 6) {
+        if (number.matches("^[0-9]*$") || number.length() == 6) {//숫자만 있어야되고 길이가 맞게
             return true;
         }
         return false;
@@ -82,29 +78,4 @@ public class Prompt {
             }
         }
     }
-
-//    public static int parseInt(Scanner scan) {
-//        String temp = nextLine(scan);
-//
-//        while (!temp.matches("^[0-9]*$")) {//숫자가 안나오면
-//            //^[0-9]*$의 의미
-//            // ^:스트링의 시작
-//            // [0-9]*:0-9로 이루어진 문자 여러개  *의 의미는 한개이상일때라는 말이다
-//            // $: 끝
-//
-//            System.out.println("숫자만 입력해주세요");
-//            System.out.print("> ");
-//            temp = scan.nextLine();
-//        }
-//        return Integer.parseInt(temp);
-//    }
-//
-//    public static String nextLine(Scanner scanner) {
-//        String temp = scanner.nextLine();
-//
-//        if (temp.isEmpty()) {
-//            temp = scanner.nextLine();
-//        }
-//        return temp;
-//    }
 }
