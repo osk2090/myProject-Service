@@ -37,14 +37,12 @@ public class App {
                         admin.adminLogic();
                     } else {
                         System.out.println("관리자의 아이디와 비밀번호를 확인해주세요.");
-                        choice = Prompt.promptInt("-Nike-\n-Draw-\n1. 응모자 2. 관리자 3. 당첨자 수령하기 4.History");
                     }
                 } else if (choice == 3) {
                     if (clientHandler.showClients() == 0) {
                         System.out.println("입력된 응모자가 없습니다.");
                     } else {
                         Client c = clientHandler.getInfo(admin.getR());
-
                         Admin.winnerCheck(c.getName(), c.getId(), c.getcSize(), c.getIdx());
                     }
                 } else if (choice == 4) {

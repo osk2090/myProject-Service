@@ -42,7 +42,7 @@ public class Admin {
     r = client.getIdx();//당첨자 인덱스 저장
   }
 
-  void adminLogic() throws CloneNotSupportedException {
+  void adminLogic() {
     boolean run = true;
     while (run) {
 
