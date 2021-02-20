@@ -19,12 +19,11 @@ public class ClientInfoHandler extends AbstractClientHandler {
     }
 
     public void removeClinet(int clientNo,List<Client> clientList) {
-//        int temp = clientList.get(clientNo).getIdx();
-
         clientList.remove(clientNo);
-//        for (int i = temp; i < clientList.size() - 1; i++) {
-//            clientList.get(i + 1).setIdx(i);
-//        }
+
+        for (int i = 0; i < clientList.size(); i++) {
+            clientList.get(i).setIdx(i);//인덱스 처음부터 재배열
+        }
     }
 
     @Override

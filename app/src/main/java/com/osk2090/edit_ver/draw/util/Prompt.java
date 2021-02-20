@@ -40,14 +40,14 @@ public class Prompt {
     }
 
     public static boolean PhoneNumberCheck(String number) {
-        if (number.matches("^[0-9]*$") || number.length() == 11) {//숫자만 있어야되고 길이가 맞게
+        if (number.matches("^[0-9]*$") && number.length() == 11) {//숫자만 있어야되고 길이가 맞게
             return true;
         }
         return false;
     }
 
     public static boolean BirthNumberCheck(String number) {
-        if (number.matches("^[0-9]*$") || number.length() == 6) {//숫자만 있어야되고 길이가 맞게
+        if (number.matches("^[0-9]*$") && number.length() == 6) {//숫자만 있어야되고 길이가 맞게
             return true;
         }
         return false;
@@ -61,7 +61,7 @@ public class Prompt {
                 System.out.println("번호길이 맞습니다.");
                 check = false;
             } else {
-                System.out.println("번호길이가 맞지않습니다.");
+                System.out.println("번호 길이가 맞지않거나 숫자가 아닙니다.");
             }
         }
     }
@@ -74,7 +74,7 @@ public class Prompt {
                 System.out.println("생년월일 길이 맞습니다.");
                 check = false;
             } else {
-                System.out.println("생년월일 길이가 맞지않습니다.");
+                System.out.println("생년월일 길이가 맞지않거나 숫자가 아닙니다.");
             }
         }
     }
