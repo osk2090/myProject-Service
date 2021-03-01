@@ -1,8 +1,11 @@
 package com.osk2090.edit_ver.draw.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Client {
+public class Client implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;//응모자 이름
     private String pN;//응모자 전화번호
     private String bN;//응모자 생년월일

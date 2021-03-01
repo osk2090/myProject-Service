@@ -18,7 +18,6 @@ public class ClientSizeCheckHandler extends AbstractClientHandler {
             if (sizeCheck(mySize) != -1) {
                 System.out.println("사이즈 확인됨");
                 c.setcSize(mySize);
-                c.setIdx(clientList.size());//인덱스 자동으로 넣기
                 clientList.add(c);//최종저장
                 System.out.println("응모에 참여해주셔서 감사합니다.");
                 run = false;

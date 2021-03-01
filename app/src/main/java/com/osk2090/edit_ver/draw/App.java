@@ -4,6 +4,7 @@ import com.osk2090.edit_ver.draw.Handler.*;
 import com.osk2090.edit_ver.draw.domain.Client;
 import com.osk2090.edit_ver.draw.util.Prompt;
 
+import java.io.*;
 import java.util.*;
 
 public class App {
@@ -11,8 +12,16 @@ public class App {
     static ArrayDeque<Integer> commandStack = new ArrayDeque<>();
     static LinkedList<Integer> commandQueue = new LinkedList<>();
 
+    //VO를 저장할 컬렉션 객체
+    static List<Client> clientList;
+
+    //데티어 파일 정보
+    static File clientFile = new File("clients.data");
+
     public static void main(String[] args) throws CloneNotSupportedException {
-        ArrayList<Client> clientList = new ArrayList<>();
+
+        //파일에서 데이터를 읽어온다(데이터로딩)
+        clientList = loadObjects(clientFile, Client.class);
 
         HashMap<Integer, Command> commandMap = new HashMap<>();
 
@@ -62,6 +71,10 @@ public class App {
                 System.out.println("==================================================");
             }
         }
+        //데이터를 파일로 출력한다
+        saveObjects(clientFile, clientList);
+
+        Prompt.close();
     }
 
     static void printCommandHistory(Iterator<Integer> iterator) {
@@ -74,6 +87,32 @@ public class App {
                     break;
                 }
             }
+        }
+    }
+
+    static <T extends Serializable> void saveObjects(File file, List<?> dataList) {
+        try (ObjectOutputStream out = new ObjectOutputStream(
+                new BufferedOutputStream(
+                        new FileOutputStream(file)))) {
+            out.writeObject(clientList);
+            System.out.printf("파일 %s 저장!\n", file.getName());
+
+        } catch (Exception e) {
+            System.out.println("회원 데이터를 파일로 저장하는 중에 오류가 발생!");
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    static <T extends Serializable> List<T> loadObjects(File file, Class<T> dataType) {
+        try (ObjectInputStream in = new ObjectInputStream(
+                new BufferedInputStream(
+                        new FileInputStream(file)))) {
+            System.out.printf("파일 %s 로딩!\n", file.getName());
+            return (List<T>) in.readObject();
+
+        } catch (Exception e) {
+            System.out.printf("파일 %s 로딩 중 오류 발생!\n", file.getName());
+            return new ArrayList<>();
         }
     }
 }
