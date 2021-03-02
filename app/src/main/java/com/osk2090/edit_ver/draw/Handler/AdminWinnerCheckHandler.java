@@ -20,13 +20,13 @@ public class AdminWinnerCheckHandler extends AbstractAdminHandler {
 
     if (winnerName.equals(name) && winnerId.equals(id) && winnerSize == size) {
       System.out.println("정보가 확인되었습니다. 수령해가시기 바랍니다.");
-      clientInfoHandler.removeClinet(n, clientList);
+      clientInfoHandler.removeClient(n, clientList);
       setR(-1);
       return;
     } else {
       System.out.println("정보가 틀립니다.수령하실수 없습니다.");
       System.out.println("응모자 정보를 삭제겠습니다.");
-      clientInfoHandler.removeClinet(n, clientList);
+      clientInfoHandler.removeClient(n, clientList);
       setR(-1);
       return;
     }

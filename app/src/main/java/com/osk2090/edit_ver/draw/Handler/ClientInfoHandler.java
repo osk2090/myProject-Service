@@ -10,7 +10,7 @@ public class ClientInfoHandler extends AbstractClientHandler {
         super(clientList);
     }
 
-    public static int showClients() {//카운팅
+    public int showClients() {//카운팅
         return clientList.size();
     }
 
@@ -18,7 +18,7 @@ public class ClientInfoHandler extends AbstractClientHandler {
         return clientList.get(clientNo);
     }
 
-    public void removeClinet(int clientNo,List<Client> clientList) {
+    public void removeClient(int clientNo, List<Client> clientList) {
         clientList.remove(clientNo);
 
         for (int i = 0; i < clientList.size(); i++) {

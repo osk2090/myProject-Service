@@ -11,6 +11,8 @@ public class AdminLogicHandler extends AbstractAdminHandler {
     super(clientList);
   }
 
+  ClientInfoHandler clientInfoHandler;
+
   @Override
   public void service() throws CloneNotSupportedException {
 
@@ -22,7 +24,7 @@ public class AdminLogicHandler extends AbstractAdminHandler {
     boolean run = true;
     while (run) {
 
-      int choice = Prompt.promptInt("1. 추첨하기 2. 응모자리스트 3. 로그아웃");
+      int choice = Prompt.promptInt("1. 추첨하기 2. 응모자리스트 3. 응모자삭제 4. 로그아웃");
       if (choice == 1) {
         if (clientInfoHandler.showClients() != 0) {
           System.out.println("추첨하겠습니다.");
@@ -38,6 +40,15 @@ public class AdminLogicHandler extends AbstractAdminHandler {
           clientListHandler.list();
         }
       } else if (choice == 3) {
+        if (clientInfoHandler.showClients() == 0) {
+          System.out.println("입력된 응모자가 없습니다.");
+        } else {
+          clientListHandler.list();
+          choice = Prompt.promptInt("삭제할 회원의 인덱스를 입력:");
+          clientInfoHandler.removeClient(choice, clientList);
+          System.out.println("삭제를 완료하였습니다.");
+        }
+      } else if (choice == 4) {
         System.out.println("로그아웃 되었습니다.");
         AdminCheck = -1;//로그아웃
         break;
