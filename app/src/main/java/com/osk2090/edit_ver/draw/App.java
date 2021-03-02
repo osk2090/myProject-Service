@@ -13,15 +13,14 @@ public class App {
     static LinkedList<Integer> commandQueue = new LinkedList<>();
 
     //VO를 저장할 컬렉션 객체
-    static List<Client> clientList;
+    static ArrayList<Client> clientList = new ArrayList<>();
 
     //데티어 파일 정보
-    static File clientFile = new File("clients.data");
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
         //파일에서 데이터를 읽어온다(데이터로딩)
-        clientList = loadObjects(clientFile, Client.class);
+        loadClients();
 
         HashMap<Integer, Command> commandMap = new HashMap<>();
 
@@ -72,7 +71,7 @@ public class App {
             }
         }
         //데이터를 파일로 출력한다
-        saveObjects(clientFile, clientList);
+        saveClients();
 
         Prompt.close();
     }
@@ -90,29 +89,44 @@ public class App {
         }
     }
 
-    static <T extends Serializable> void saveObjects(File file, List<?> dataList) {
-        try (ObjectOutputStream out = new ObjectOutputStream(
-                new BufferedOutputStream(
-                        new FileOutputStream(file)))) {
-            out.writeObject(clientList);
-            System.out.printf("파일 %s 저장!\n", file.getName());
-
+    static void loadClients() {
+        try (Scanner in = new Scanner(new FileReader("clients.csv"))) {
+            while (true) {
+                try {
+                    String record = in.nextLine();
+                    String[] fields = record.split(",");
+                    Client c = new Client();
+                    c.setIdx(Integer.parseInt(fields[0]));
+                    c.setName(fields[1]);
+                    c.setpN(fields[2]);
+                    c.setbN(fields[3]);
+                    c.setId(fields[4]);
+                    c.setcSize(Integer.parseInt(fields[5]));
+                    clientList.add(c);
+                } catch (Exception e) {
+                    break;
+                }
+            }
+            System.out.println("회원 데이터 로딩!");
         } catch (Exception e) {
-            System.out.println("회원 데이터를 파일로 저장하는 중에 오류가 발생!");
+            System.out.println("회원 데이터 로딩 중 오류 발생!");
         }
     }
 
-    @SuppressWarnings("unchecked")
-    static <T extends Serializable> List<T> loadObjects(File file, Class<T> dataType) {
-        try (ObjectInputStream in = new ObjectInputStream(
-                new BufferedInputStream(
-                        new FileInputStream(file)))) {
-            System.out.printf("파일 %s 로딩!\n", file.getName());
-            return (List<T>) in.readObject();
-
+    static void saveClients() {
+        try (FileWriter out = new FileWriter("clients.csv")) {
+            for (Client client : clientList) {
+                out.write(String.format("%d,%s,%s,%s,%s,%s\n",
+                        client.getIdx(),
+                        client.getName(),
+                        client.getpN(),
+                        client.getbN(),
+                        client.getId(),
+                        client.getcSize()));
+            }
+            System.out.println("회원 데이터 저장!");
         } catch (Exception e) {
-            System.out.printf("파일 %s 로딩 중 오류 발생!\n", file.getName());
-            return new ArrayList<>();
+            System.out.println("회원 데이터를 파일로 저장하는 중에 오류 발생!");
         }
     }
 }
