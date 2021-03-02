@@ -45,8 +45,12 @@ public class AdminLogicHandler extends AbstractAdminHandler {
         } else {
           clientListHandler.list();
           choice = Prompt.promptInt("삭제할 회원의 인덱스를 입력:");
-          clientInfoHandler.removeClient(choice, clientList);
-          System.out.println("삭제를 완료하였습니다.");
+          if (choice < 0 || choice > clientList.size() - 1) {
+            System.out.println("존재하지 않는 응모자입니다.");
+          } else {
+            clientInfoHandler.removeClient(choice, clientList);
+            System.out.println("삭제를 완료하였습니다.");
+          }
         }
       } else if (choice == 4) {
         System.out.println("로그아웃 되었습니다.");
