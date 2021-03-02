@@ -14,11 +14,13 @@ public class ClientListHandler extends AbstractClientHandler {
     public static void list() throws CloneNotSupportedException {
         System.out.println("응모자 목록");
         Iterator<Client> iterator = clientList.iterator();
+        System.out.println("====================================================================");
         while (iterator.hasNext()) {
             Client c1 = iterator.next();
             System.out.printf("%d. 이름: %s 전화번호: %s 생년월일: %s 아이디: %s 사이즈: %s\n",
                     c1.getIdx(), c1.getName(), c1.getpN(), c1.getbN(), c1.getId(), c1.getcSize());
         }
+        System.out.println("====================================================================");
     }
 
     @Override

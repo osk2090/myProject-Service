@@ -3,11 +3,10 @@ package com.osk2090.edit_ver.draw.Handler;
 import com.osk2090.edit_ver.draw.domain.Client;
 import com.osk2090.edit_ver.draw.util.Prompt;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientAddHandler extends AbstractClientHandler {
-    private static ArrayList<Client> clientList = new ArrayList<>();
+//    private static ArrayList<Client> clientList = new ArrayList<>();
 
     //신발 출력할때 줄을 나열해서 출력하기
     int[] SHOE_SIZE = {250, 255, 260, 265, 270, 275, 280, 285, 290, 300};//신발사이즈
