@@ -1,7 +1,10 @@
 package com.osk2090.edit_ver.draw;
 
+import com.google.gson.Gson;
 import com.osk2090.edit_ver.draw.Handler.*;
 import com.osk2090.edit_ver.draw.domain.Client;
+import com.osk2090.edit_ver.draw.util.CsvObject;
+import com.osk2090.edit_ver.draw.util.ObjectFactory;
 import com.osk2090.edit_ver.draw.util.Prompt;
 
 import java.io.*;
@@ -15,12 +18,13 @@ public class App {
     //VO를 저장할 컬렉션 객체
     static ArrayList<Client> clientList = new ArrayList<>();
 
-    //데티어 파일 정보
+    //데이터 파일 정보
+    static File clientFile = new File("clients.json");
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
         //파일에서 데이터를 읽어온다(데이터로딩)
-        loadClients();
+        loadClients(clientFile, clientList, Client[].class);
 
         HashMap<Integer, Command> commandMap = new HashMap<>();
 
@@ -71,7 +75,7 @@ public class App {
             }
         }
         //데이터를 파일로 출력한다
-        saveClients();
+        saveClients(clientFile, clientList);
 
         Prompt.close();
     }
@@ -89,44 +93,28 @@ public class App {
         }
     }
 
-    static void loadClients() {
-        try (Scanner in = new Scanner(new FileReader("clients.csv"))) {
-            while (true) {
-                try {
-                    String record = in.nextLine();
-                    String[] fields = record.split(",");
-                    Client c = new Client();
-                    c.setIdx(Integer.parseInt(fields[0]));
-                    c.setName(fields[1]);
-                    c.setpN(fields[2]);
-                    c.setbN(fields[3]);
-                    c.setId(fields[4]);
-                    c.setcSize(Integer.parseInt(fields[5]));
-                    clientList.add(c);
-                } catch (Exception e) {
-                    break;
-                }
+    static <T> void loadClients(File file, List<T> list, Class<T[]> arrType) {
+        try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+            StringBuilder strBuilder = new StringBuilder();
+            String str = null;
+            while ((str = in.readLine()) != null) {
+                strBuilder.append(str);
             }
-            System.out.println("회원 데이터 로딩!");
+            Gson gson = new Gson();
+            T[] arr = gson.fromJson(strBuilder.toString(), arrType);
+            list.addAll(Arrays.asList(arr));
+            System.out.printf("%s 파일 데이터 로딩!\n", file.getName());
         } catch (Exception e) {
-            System.out.println("회원 데이터 로딩 중 오류 발생!");
+            System.out.printf("%s 파일 데이터 로딩 중 오류 발생!\n", file.getName());
         }
     }
 
-    static void saveClients() {
-        try (FileWriter out = new FileWriter("clients.csv")) {
-            for (Client client : clientList) {
-                out.write(String.format("%d,%s,%s,%s,%s,%s\n",
-                        client.getIdx(),
-                        client.getName(),
-                        client.getpN(),
-                        client.getbN(),
-                        client.getId(),
-                        client.getcSize()));
-            }
-            System.out.println("회원 데이터 저장!");
+    static <T extends CsvObject> void saveClients(File file, List<T> list) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(file))) {
+            out.write(new Gson().toJson(list));
+            System.out.printf("%s 파일 데이터 저장!\n", file.getName());
         } catch (Exception e) {
-            System.out.println("회원 데이터를 파일로 저장하는 중에 오류 발생!");
+            System.out.printf("%s 파일 데이터 저장하는 중 오류 발생!\n", file.getName());
         }
     }
 }
